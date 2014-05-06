@@ -1,0 +1,27 @@
+production:
+  options:
+    raise_not_found_error: false
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
+
+development:
+  options:
+    raise_not_found_error: false
+  sessions:
+    default:
+      database: givifi-store-pickup
+      hosts:
+        - localhost:27017
+
+test:
+  options:
+    raise_not_found_error: false
+  sessions:
+    default:
+      database: givifi-store-test-temp
+      hosts:
+        - tm-db:27017

@@ -1,0 +1,33 @@
+<form class="form-horizontal edit-gift"
+      action="/gifts/<%= @gift.id %>/update" method="post">
+  <fieldset>
+    <h3>Update Gift</h3>
+    <div class="control-group">
+      <label class="control-label" for="product">Product</label>
+      <div class="control">
+        <input type="text" name="product" id="product" value=<%= @gift.name %>>
+      </div>
+    </div>
+    <div class="control-group">
+    
+      <label class="control-label" for="brand">Brand</label>
+      <div class="control">
+        <input type="text" id="brand" name="brand" value= <%= @gift.brand %>>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="url">Url</label>
+      <div class="control">
+        <input type="text" id="url" name="url" value= <%= @gift.url %>>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="control">
+        <textarea id="description" name="description"><%= @gift.description %></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+
+  </fieldset>
+</form>

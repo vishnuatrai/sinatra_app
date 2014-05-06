@@ -1,0 +1,26 @@
+<div class="row-fluid">
+  <div class="span4 scroll">
+    <%= erb :_occasions %>
+    Every One <%= erb :_add_contact %>
+    <br />
+    <%= erb :_all_contacts %>
+  </div>
+
+  <div class="span4 scroll" id="gift_queue">
+    <% if @occasions.length > 0 %>
+      <%= erb :_gift_queue, :locals => {:occasion => @occasions.first} %>
+    <% end %>
+  </div>
+
+  <div class="span4 scroll" id="gift_detail">
+    <% if @occasions.length > 0 %>
+        <% recommendation = @occasions.first.cached_recommendations.first %>
+      <%= erb :_gift, :locals => {:recommendation => @occasions.first.cached_recommendations.first, :recommended => true} if recommendation %>
+    <% end %>
+  </div>
+</div>
+<div class="span3">
+
+</div>
+
+<script src="/js/home.js"></script>

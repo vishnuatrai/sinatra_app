@@ -1,0 +1,56 @@
+<div class="modal hide fade" id="add_contact">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Add a contact</h3>
+  </div>
+
+  <div class="modal-body">
+    <form action="/add_contact" method="post" class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="first_name">First name</label>
+        <div class="controls">
+          <input type="text" name="first_name" id="first_name"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="last_name">Last name</label>
+        <div class="controls">
+          <input type="text" name="last_name" id="last_name"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="relationship">Relationship</label>
+        <div class="controls">
+          <select id="relationship" name="relationship">
+            <option value="">Select</option>
+            <% AddContact.relationship_list.each do | value, option| %>
+              <option value=<%= value %>><%= option %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="birthday">Birthday</label>
+        <div class="controls">
+          <input type="text" name="birthday" id="birthday" class="datepicker"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+          <input type="submit" class="btn btn-primary" value="Save Contact"/>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<a href="#add_contact" role="button" class="btn btn-primary pull-right" data-toggle="modal">Add Contact</a>
+
+<style>
+.datepicker{z-index:1151;}
+</style>
+
+<script type="text/javascript">
+  $('.datepicker').datepicker()
+</script>

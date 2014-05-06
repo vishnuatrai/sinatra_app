@@ -1,0 +1,80 @@
+<%
+   count = 0
+   field_is_disabled = @user.facebook_id.present? ? "disabled = 'true'" : ""
+
+%>
+<div  title="Edit user">
+
+  <form action="/update_contact/<%= @user.id%>" method="post" id="update_contact" class="<%= @user.id %>" name="update_contact">
+    <fieldset>
+      <table style="width: 100%;" >
+        <tr>
+          <td>
+            <img src="/vendor/bootstrap/img/empty_profile.jpg" style="height: 95px;margin: 10px;"/>
+          </td>
+          <td>
+            <input type="text" name="first_name" <%= field_is_disabled %> value="<%= @user.name %>" id="name" class="text ui-widget-content ui-corner-all"/><br />
+            (Friend)
+          </td>
+        </tr>
+        <br/>
+        <% @user.occasions.each do |occasion| %>
+            <% count = count+1 %>
+        <tr>
+          <td>
+            <input type="text" name="occasions[<%= count%>][name]" <%= field_is_disabled %> value="<%=occasion.name.capitalize %>" id="ocassion_name" class="text ui-widget-content ui-corner-all "/>
+          </td>
+          <td>
+            <input type="text" name="occasions[<%= count%>][date]" <%= field_is_disabled %> value="<%= occasion.date.strftime("%Y-%m-%d")%>" id="ocassion_birthday" class="datepicker text ui-widget-content ui-corner-all"/>
+          </td>
+        </tr>
+        <% end  %>
+        <% count = count+1 %>
+        <tr>
+          <td>
+            <input type="text" name="occasions[<%= count%>][name]" value=""  class="text ui-widget-content ui-corner-all "/>
+          </td>
+          <td>
+            <input type="text" id="occasion_date_<%= count %>" name="occasions[<%= count%>][date]" value=""  class="datepicker text ui-widget-content ui-corner-all "/>
+          </td>
+        </tr>
+
+       <% ((count+1)..(count+11)).each do |x| %>
+            <tr style="display: none;" id="occasion_<%= x %>">
+              <td>
+                <input type="text" name="occasions[<%= x%>][name]" value=""  class="text ui-widget-content ui-corner-all "/>
+              </td>
+              <td>
+                <input type="text" id="occasion_date_<%= x %>" name="occasions[<%= x%>][date]" value=""  class="datepicker text ui-widget-content ui-corner-all"/>
+              </td>
+            </tr>
+        <% end  %>
+
+
+
+      </table>
+    </fieldset>
+  </form>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+      $('.datepicker').datepicker(
+              { dateFormat: 'yy-mm-dd',
+                  onSelect: function(){
+                     var field_number = $(this).attr("id").replace ( /[^\d.]/g, '');
+                     var number = parseInt(field_number, 10) + 1;
+                      var occasion = "#occasion_"+ number;
+                      $(occasion).show();
+                  }
+              }
+      );
+  });
+</script>
+
+<style>
+  .ui-dialog{
+      width: 500px !important;
+  }
+</style>

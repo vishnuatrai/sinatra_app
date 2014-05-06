@@ -1,0 +1,20 @@
+<h3>Upcoming Events</h3>
+
+<form class="navbar-search pull-left">
+  <input type="text">
+</form>
+
+<table class="table table-striped table-bordered">
+  <tbody>
+    <% if @occasions.length > 0 %>
+      <% @occasions.each do |occasion| %>
+        <tr class="occasion_row" id="<%= occasion.id %>">
+          <td><%= occasion.friend['first_name'] %> <%= occasion.friend['last_name'] %></td>
+          <td><%= occasion['type'] %> in <%= distance_of_time_in_words(Time.now, occasion.relative_date) %> <i class="icon-chevron-right pull-right"></i>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr><td>No upcoming occasions. Why don't you <a href="/add_friends">add a few more friends?</a></td></tr>
+    <% end %>
+  </tbody>
+</table>

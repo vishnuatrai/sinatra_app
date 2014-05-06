@@ -1,0 +1,20 @@
+<div class="row-fluid">
+  <h3>Gift recommendations <%= "for #{@friend.first_name}" if @friend %></h3>
+  <% @gifts["recommendations"].each_slice(3) do |gift_set| %>
+  <div class="span12">
+    <div class="span4">
+      <a href="<%= gift_set[0]["url"]%>"><img class="img-rounded" src="<%= gift_set[0]["image_url"]%>"/><%= gift_set[0]["name"] %></a>
+    </div>
+    <% if gift_set[1] %>
+    <div class="span4">
+      <a href="<%= gift_set[1]["url"]%>"><img class="img-rounded" src="<%= gift_set[1]["image_url"]%>"/><%= gift_set[1]["name"] %></a>
+    </div>
+    <% end %>
+    <% if gift_set[2] %>
+    <div class="span4">
+      <a href="<%= gift_set[2]["url"]%>"><img class="img-rounded" src="<%= gift_set[2]["image_url"]%>"/><%= gift_set[2]["name"] %></a>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

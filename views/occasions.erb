@@ -1,0 +1,13 @@
+<table class="table table-striped table-bordered">
+  <caption>Upcoming occasions:</caption>
+  <tbody>
+  <% @occasions.each do |occasion| %>
+    <tr>
+      <td><%= occasion.friend['first_name'] %> <%= occasion.friend['last_name'] %></td>
+      <td><%= occasion['type'] %></td>
+      <td><%= occasion['date'].to_time.strftime("%b %d") %></td>
+      <td><a href="/gifts/<%= occasion.friend.facebook_id %>" class="btn btn-primary">Go Shopping</a></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

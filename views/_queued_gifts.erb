@@ -1,0 +1,12 @@
+<table class="table table-striped table-bordered" id="queue" data-update_url="gifts/sort">
+  <% if occasion and occasion.gifts and occasion.gifts.length > 0 %>
+    <% occasion.gifts.order_by([[ :row_order, :asc ]]).each do |gift| %>
+      <tr class="queued_row item" id="gift-<%= gift.id %>" data-id="<%= gift.id %>" data-item_id="<%= gift.id %>">
+	<td><%= gift.name %> <i class="icon-chevron-right
+	pull-right"></i></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr><td>No gifts queued!</td></tr>
+  <% end %>
+</table>

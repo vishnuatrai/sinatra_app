@@ -1,0 +1,24 @@
+.new-gift .control-label {
+    width: 100px;
+    padding-right: 10px;
+}
+
+.new-gift input[type=text], .new-gift textarea  {
+    width: 256px;
+}
+
+.scroll{
+    overflow:auto; height:500px;
+}
+
+#sortable {
+  tr.item {
+    cursor: row-resize;
+  }
+}
+
+#recommended {
+  tr.item {
+    cursor: row-resize;
+  }
+}

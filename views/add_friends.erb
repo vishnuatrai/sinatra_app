@@ -1,0 +1,35 @@
+<a href="/home" class="btn btn-primary pull-right">Next</a>
+
+<% unless @family.empty? %>
+<h2>Family</h2>
+<table class="table table-striped table-bordered">
+  <caption>Choose which family members to add</caption>
+  <tbody>
+  <% @family.each do |friend| %>
+    <tr>
+      <td><%= friend["name"] %>
+	<div style="float: right; color: #888888">
+	  <%= friend["relationship"] %>
+	</div>
+      </td>
+      <td><a class="btn btn-primary add_friend" id="<%= friend["id"] %>" firstname="<%= friend["first_name"] %>" lastname="<%= friend["last_name"] %>" birthday="<%= friend["birthday"]%>" type="button">Add</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<h2>Friends</h2>
+<table class="table table-striped table-bordered">
+  <caption>Choose which friends to add</caption>
+  <tbody>
+  <% @friends.each do |friend| %>
+    <tr>
+      <td><%= friend["name"] %></td>
+      <td><a class="btn btn-primary add_friend" id="<%= friend["id"] %>" firstname="<%= friend["first_name"] %>" lastname="<%= friend["last_name"] %>" birthday="<%= friend["birthday"]%>" type="button">Add</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script src="/js/add_friends.js"></script>
